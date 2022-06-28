@@ -5,6 +5,7 @@ import 'package:newapp/main.dart';
 import 'package:newapp/screens/secondpage.dart';
 
 import 'package:newapp/themecode/themecode.dart';
+import 'package:newapp/screens/lentmoney.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -39,42 +40,37 @@ class MyApp extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: style1,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondRoute()),
-                      );
-                    },
-                    child: const Text(
-                      'Add a New Entry',
-                      style:
-                          TextStyle(fontFamily: 'DidactGothic', fontSize: 17),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondRoute()),
-                      );
-                    },
-                    style: style1,
-                    child: const Text(
-                      'Add an Old Entry',
-                      style:
-                          TextStyle(fontFamily: 'DidactGothic', fontSize: 17),
-                    ),
-                  ),
-                ])
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              ElevatedButton(
+                style: style1,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                  );
+                },
+                child: const Text(
+                  'Money Spent',
+                  style: TextStyle(fontFamily: 'DidactGothic', fontSize: 17),
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LentMoney()),
+                  );
+                },
+                style: style1,
+                child: const Text(
+                  'Money Lent',
+                  style: TextStyle(fontFamily: 'DidactGothic', fontSize: 17),
+                ),
+              ),
+            ])
           ]),
         ),
       ),

@@ -9,8 +9,8 @@ import 'package:newapp/themecode/themecode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
-class SecondRoute extends StatefulWidget {
-  const SecondRoute({Key? key}) : super(key: key);
+class LentMoney extends StatefulWidget {
+  const LentMoney({Key? key}) : super(key: key);
 
   @override
   Valid createState() => Valid();
@@ -18,7 +18,7 @@ class SecondRoute extends StatefulWidget {
   void onSubmit(String amount) {}
 }
 
-class Valid extends State<SecondRoute> {
+class Valid extends State<LentMoney> {
   final _formKey = GlobalKey<FormState>();
   // declare a variable to keep track of the input text
   String amount = ' ';
@@ -30,9 +30,7 @@ class Valid extends State<SecondRoute> {
     }
   }
 
-  int _groceries = 0;
-  int _essentials = 0;
-  int _others = 0;
+  int lentmoney = 0;
 
   getValue() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -40,39 +38,15 @@ class Valid extends State<SecondRoute> {
     return money;
   }
 
-  setGroceries() async {
+  setMoney() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setInt('money value', _groceries);
-  }
-
-  setEssentials() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setInt('money value', _essentials);
-  }
-
-  setOthers() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setInt('money value', _others);
+    pref.setInt('money value', lentmoney);
   }
 
   checkGrocvalue() async {
     int groc = await getValue() ?? 0;
     setState(() {
-      _groceries = groc;
-    });
-  }
-
-  checkEssvalue() async {
-    int ess = await getValue() ?? 0;
-    setState(() {
-      _essentials = ess;
-    });
-  }
-
-  checkOthvalue() async {
-    int oth = await getValue() ?? 0;
-    setState(() {
-      _others = oth;
+      lentmoney = groc;
     });
   }
 
@@ -80,8 +54,6 @@ class Valid extends State<SecondRoute> {
   void initState() {
     super.initState();
     checkGrocvalue();
-    checkEssvalue();
-    checkOthvalue();
   }
 
   @override
@@ -97,7 +69,7 @@ class Valid extends State<SecondRoute> {
         ),
         backgroundColor: razerColor,
         title: const Text(
-          'Money Spent',
+          'Money Lent',
           style: TextStyle(
               color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
         ),
@@ -107,7 +79,7 @@ class Valid extends State<SecondRoute> {
         margin: const EdgeInsets.only(top: 30, left: 65),
         child: Column(children: [
           const Text(
-            'Enter Your Spent Amount',
+            'Enter Amount Lent',
             style: TextStyle(
                 color: razerColor, fontFamily: 'DidactGothic', fontSize: 26),
           ),
@@ -137,33 +109,11 @@ class Valid extends State<SecondRoute> {
           ElevatedButton(
               style: style1,
               onPressed: () {
-                _groceries = _groceries + int.parse(amount);
-                print(_groceries);
-                setGroceries();
+                lentmoney = lentmoney + int.parse(amount);
+                print(lentmoney);
+                setMoney();
               },
-              child: const Text('Groceries')),
-          const SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(
-              style: style1,
-              onPressed: () {
-                _essentials = _essentials + int.parse(amount);
-                print(_essentials);
-                setEssentials();
-              },
-              child: const Text('Essentials')),
-          const SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(
-              style: style1,
-              onPressed: () {
-                _others = _others + int.parse(amount);
-                print(_others);
-                setOthers();
-              },
-              child: const Text('Others')),
+              child: const Text('OK')),
         ]),
       ),
     );

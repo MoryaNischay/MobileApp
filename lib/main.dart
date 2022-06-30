@@ -52,25 +52,16 @@ class HomePage extends StatelessWidget {
               height: 40,
             ),
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SecondRoute()),
-                );
-              },
+              onPressed: () {},
               style: style2,
               child: const Text(
-                'Buisness',
+                '//Under Development',
                 style: TextStyle(fontFamily: 'DidactGothic', fontSize: 20),
               ),
             ),
             const SizedBox(
               height: 400,
             ),
-            /*const TextButton(
-              child: Text('About me'),
-              onPressed: (){ },
-            ),*/
           ]),
         ),
       ),

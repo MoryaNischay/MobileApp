@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primaryColor: const Color.fromARGB(0, 0, 0, 100)),
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: razerColor,
@@ -60,7 +61,12 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 400,
+              height: 380,
+            ),
+            const Text(
+              'by Nischay Morya 102103763',
+              style: TextStyle(
+                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 15),
             ),
           ]),
         ),

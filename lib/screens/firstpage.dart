@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:newapp/main.dart';
+
 import 'package:newapp/screens/secondpage.dart';
 
 import 'package:newapp/themecode/themecode.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primaryColor: const Color.fromARGB(0, 0, 0, 100)),
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.black,
         appBar: AppBar(
           leading: BackButton(
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: razerColor,
           centerTitle: true,
           title: const Text(
-            'New Color?',
+            'Select A Service',
             style: TextStyle(
                 color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
           ),
@@ -70,7 +72,15 @@ class MyApp extends StatelessWidget {
                   style: TextStyle(fontFamily: 'DidactGothic', fontSize: 17),
                 ),
               ),
-            ])
+            ]),
+            const SizedBox(
+              height: 480,
+            ),
+            const Text(
+              'by Nischay Morya 102103763',
+              style: TextStyle(
+                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 15),
+            ),
           ]),
         ),
       ),

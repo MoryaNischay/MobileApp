@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, prefer_const_constructors_in_immutables, avoid_print
+// ignore_for_file: unused_import, prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages
 
 // ignore: avoid_web_libraries_in_flutter
 
@@ -7,6 +7,7 @@ import 'package:newapp/main.dart';
 import 'package:newapp/screens/firstpage.dart';
 import 'package:newapp/themecode/themecode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:newapp/screens/lentstats.dart';
 
 // ignore: must_be_immutable
 class LentMoney extends StatefulWidget {
@@ -19,46 +20,41 @@ class LentMoney extends StatefulWidget {
 }
 
 class Valid extends State<LentMoney> {
+  // ignore: unused_field
   final _formKey = GlobalKey<FormState>();
   // declare a variable to keep track of the input text
   String amount = ' ';
-  void _submit() {
-    // validate all the form fields
-    if (_formKey.currentState!.validate()) {
-      // on success, notify the parent widget
-      widget.onSubmit(amount);
-    }
-  }
 
   int lentmoney = 0;
 
-  getValue() async {
+  getLentValue() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    int? money = pref.getInt('money value');
-    return money;
+    int? lnmoney = pref.getInt('money value');
+    return lnmoney;
   }
 
-  setMoney() async {
+  setLentMoney() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setInt('money value', lentmoney);
+    pref.setInt('givenmoney', lentmoney);
   }
 
-  checkGrocvalue() async {
-    int groc = await getValue() ?? 0;
+  checkLentvalue() async {
+    int lenmon = await getLentValue() ?? 0;
     setState(() {
-      lentmoney = groc;
+      lentmoney = lenmon;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    checkGrocvalue();
+    checkLentvalue();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
       appBar: AppBar(
         leading: BackButton(
@@ -111,9 +107,28 @@ class Valid extends State<LentMoney> {
               onPressed: () {
                 lentmoney = lentmoney + int.parse(amount);
                 print(lentmoney);
-                setMoney();
+                setLentMoney();
               },
               child: const Text('OK')),
+          const SizedBox(
+            height: 30,
+          ),
+          ElevatedButton(
+              style: style1,
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        LentStats(lent: lentmoney.toString())));
+              },
+              child: const Text('Lent Stats')),
+          const SizedBox(
+            height: 230,
+          ),
+          const Text(
+            'by Nischay Morya 102103763',
+            style: TextStyle(
+                color: razerColor, fontFamily: 'DidactGothic', fontSize: 15),
+          ),
         ]),
       ),
     );

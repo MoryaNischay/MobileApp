@@ -1,16 +1,12 @@
-# newapp
+# ExpensesManager
 
-A new Flutter project.
+First Flutter project.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 7 Dart files have been used 1 for each page and 1 for theme
+## Shared preferences is used to store data locally in secondpage.dart
+## The Main page has 2 buttons to select clients I am going to further develop this so one of them is not yet enabled
+## Choosing client brings us to a page where we can select if we want to add an entry of spent money or lent money
+## After choosing Spent we come to a screen where we enter our amount and chose 1 of the 3 departments this value is then stored locally
+## We can see the amount we have spent by clicking the view stats button on the same page
+## Similar for the Lent page but we only have 1 option there to add to total amount lent 

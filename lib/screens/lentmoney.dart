@@ -16,14 +16,14 @@ class LentMoney extends StatefulWidget {
   @override
   Valid createState() => Valid();
 
-  void onSubmit(String amount) {}
+  void onSubmit(String moneyln) {}
 }
 
 class Valid extends State<LentMoney> {
   // ignore: unused_field
   final _formKey = GlobalKey<FormState>();
   // declare a variable to keep track of the input text
-  String amount = ' ';
+  String moneyln = ' ';
 
   int lentmoney = 0;
 
@@ -86,7 +86,7 @@ class Valid extends State<LentMoney> {
             constraints: const BoxConstraints.tightFor(width: 200, height: 100),
             child: TextFormField(
                 onChanged: (val) => setState(() {
-                      amount = val;
+                      moneyln= val;
 
                       //
                     }),
@@ -105,7 +105,7 @@ class Valid extends State<LentMoney> {
           ElevatedButton(
               style: style1,
               onPressed: () {
-                lentmoney = lentmoney + int.parse(amount);
+                lentmoney = lentmoney + int.parse(moneyln);
                 print(lentmoney);
                 setLentMoney();
               },

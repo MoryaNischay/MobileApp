@@ -76,11 +76,6 @@ class MyApp extends StatelessWidget {
             const SizedBox(
               height: 480,
             ),
-            const Text(
-              'by Nischay Morya 102103763',
-              style: TextStyle(
-                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 15),
-            ),
           ]),
         ),
       ),

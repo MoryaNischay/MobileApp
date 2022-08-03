@@ -86,7 +86,7 @@ class Valid extends State<LentMoney> {
             constraints: const BoxConstraints.tightFor(width: 200, height: 100),
             child: TextFormField(
                 onChanged: (val) => setState(() {
-                      moneyln= val;
+                      moneyln = val;
 
                       //
                     }),
@@ -123,11 +123,6 @@ class Valid extends State<LentMoney> {
               child: const Text('Lent Stats')),
           const SizedBox(
             height: 230,
-          ),
-          const Text(
-            'by Nischay Morya 102103763',
-            style: TextStyle(
-                color: razerColor, fontFamily: 'DidactGothic', fontSize: 15),
           ),
         ]),
       ),

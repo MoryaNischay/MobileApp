@@ -188,11 +188,6 @@ class Valid extends State<SecondRoute> {
             const SizedBox(
               height: 100,
             ),
-            const Text(
-              'by Nischay Morya 102103763',
-              style: TextStyle(
-                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 15),
-            ),
           ],
         ),
       ),

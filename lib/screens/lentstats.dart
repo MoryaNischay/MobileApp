@@ -42,9 +42,7 @@ class LentStats extends StatelessWidget {
                     fontFamily: 'DidactGothic',
                     fontSize: 24),
               ),
-              const SizedBox(
-                height: 480,
-              ),
+              
             ],
           ),
         ),

@@ -121,9 +121,7 @@ class Valid extends State<LentMoney> {
                         LentStats(lent: lentmoney.toString())));
               },
               child: const Text('Lent Stats')),
-          const SizedBox(
-            height: 230,
-          ),
+        
         ]),
       ),
     );

@@ -185,9 +185,7 @@ class Valid extends State<SecondRoute> {
                           others: _others.toString())));
                 },
                 child: const Text('View Stats')),
-            const SizedBox(
-              height: 100,
-            ),
+            
           ],
         ),
       ),

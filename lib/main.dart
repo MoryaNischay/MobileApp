@@ -60,9 +60,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontFamily: 'DidactGothic', fontSize: 20),
               ),
             ),
-            const SizedBox(
-              height: 380,
-            ),
+            
           ]),
         ),
       ),

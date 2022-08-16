@@ -13,3 +13,5 @@ var style2 = ElevatedButton.styleFrom(
     onPrimary: Colors.black,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
     minimumSize: const Size(200, 50));
+
+const txtBgclr = Colors.black;

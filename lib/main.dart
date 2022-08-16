@@ -20,17 +20,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: const Color.fromARGB(0, 0, 0, 100)),
+      theme: ThemeData(primaryColor: txtBgclr),
       home: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.black,
+        backgroundColor: txtBgclr,
         appBar: AppBar(
           backgroundColor: razerColor,
           centerTitle: true,
           title: const Text(
             'Select A Client',
             style: TextStyle(
-                color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
+                color: txtBgclr, fontFamily: 'DidactGothic', fontSize: 30),
           ),
         ),
         body: Container(

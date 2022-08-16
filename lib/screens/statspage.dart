@@ -15,10 +15,10 @@ class StatsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
+      backgroundColor: txtBgclr,
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.black,
+          color: txtBgclr,
           onPressed: () {
             Navigator.pop(context);
           },
@@ -27,7 +27,7 @@ class StatsPage extends StatelessWidget {
         title: const Text(
           'Money Spent',
           style: TextStyle(
-              color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
+              color: txtBgclr, fontFamily: 'DidactGothic', fontSize: 30),
         ),
       ),
       body: Center(

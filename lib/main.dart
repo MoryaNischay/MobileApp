@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        backgroundColor: txtBgclr,
       ),
-      home: const WidgetTree(),
+      home: const SnapShotDecider(),
     );
   }
 }

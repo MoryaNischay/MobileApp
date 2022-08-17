@@ -8,8 +8,8 @@ import 'package:newapp/screens/secondpage.dart';
 import 'package:newapp/themecode/themecode.dart';
 import 'package:newapp/screens/lentmoney.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ExpPage extends StatelessWidget {
+  const ExpPage({super.key});
 
   @override
   Widget build(context) {

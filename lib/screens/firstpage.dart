@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:newapp/main.dart';
-
+import 'package:newapp/screens/LoginScreen.dart';
+import 'auth.dart';
 import 'package:newapp/screens/secondpage.dart';
 
 import 'package:newapp/themecode/themecode.dart';
@@ -10,7 +11,9 @@ import 'package:newapp/screens/lentmoney.dart';
 
 class ExpPage extends StatelessWidget {
   const ExpPage({super.key});
-
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
   @override
   Widget build(context) {
     return MaterialApp(
@@ -21,12 +24,8 @@ class ExpPage extends StatelessWidget {
         appBar: AppBar(
           leading: BackButton(
             color: Colors.black,
-            onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const HomePage()),
-              // );
-            },
+            onPressed: signOut,
+            
           ),
           backgroundColor: razerColor,
           centerTitle: true,

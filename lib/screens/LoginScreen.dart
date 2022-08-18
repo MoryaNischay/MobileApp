@@ -67,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _submitButton() {
     return ElevatedButton(
+      style: style1,
       onPressed:
           isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
       child: Text(isLogin ? 'Login' : 'Register'),

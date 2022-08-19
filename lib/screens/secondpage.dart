@@ -93,7 +93,7 @@ class Valid extends State<SecondRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
+      backgroundColor: txtBgclr,
       appBar: AppBar(
         leading: BackButton(
           color: Colors.black,
@@ -105,18 +105,21 @@ class Valid extends State<SecondRoute> {
         title: const Text(
           'Money Spent',
           style: TextStyle(
-              color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
+              color: txtBgclr, fontFamily: 'DidactGothic', fontSize: 30),
         ),
       ),
       body: Container(
-        // key: _formKey,
-        margin: const EdgeInsets.only(top: 30, left: 65),
+        height: double.infinity,
+        width: double.infinity,
         child: Column(
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             const Text(
               'Enter Your Spent Amount',
               style: TextStyle(
-                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 26),
+                  color: txtclr, fontFamily: 'DidactGothic', fontSize: 26),
             ),
             const SizedBox(
               height: 80,
@@ -125,37 +128,23 @@ class Valid extends State<SecondRoute> {
               constraints:
                   const BoxConstraints.tightFor(width: 200, height: 100),
               child: TextField(
+                onChanged: (val) => setState(() {
+                  amount = val;
+                }),
                 controller: _controllerField,
                 keyboardType: TextInputType.number,
-                cursorColor: razerColor,
-                style: const TextStyle(color: razerColor, fontSize: 30),
+                cursorColor: txtclr,
+                style: const TextStyle(color: txtclr, fontSize: 30),
                 decoration: const InputDecoration(
                     hintStyle: (TextStyle(
-                        color: razerColor,
+                        color: txtclr,
                         fontFamily: 'DidactGotgic',
                         fontSize: 20)),
                     enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: razerColor)),
+                        borderSide: BorderSide(color: txtclr)),
                     hintText: 'Amount'),
               ),
-              // child: TextFormField(
-              //     onChanged: (val) => setState(() {
-              //           amount = val;
-
-              //           //
-              //         }),
-              //     keyboardType: TextInputType.number,
-              //     cursorColor: razerColor,
-              //     style: const TextStyle(color: razerColor, fontSize: 30),
-              //     decoration: const InputDecoration(
-              //       hintStyle: (TextStyle(
-              //           color: razerColor,
-              //           fontFamily: 'DidactGothic',
-              //           fontSize: 20)),
-              //       border: UnderlineInputBorder(),
-              //       hintText: 'Amount',
-              //     )),
-            ),
+             ),
             ElevatedButton(
                 style: style1,
                 onPressed: () {
@@ -163,9 +152,7 @@ class Valid extends State<SecondRoute> {
 
                   userSetup(money: groc);
                   _controllerField.clear();
-                  // _groceries = _groceries + int.parse(amount);
-                  // print(_groceries);
-                  // setGroceries();
+                  
                 },
                 child: const Text('Groceries')),
             const SizedBox(
@@ -177,6 +164,7 @@ class Valid extends State<SecondRoute> {
                   _essentials = _essentials + int.parse(amount);
                   print(_essentials);
                   setEssentials();
+                  _controllerField.clear();
                 },
                 child: const Text('Essentials')),
             const SizedBox(
@@ -188,6 +176,7 @@ class Valid extends State<SecondRoute> {
                   _others = _others + int.parse(amount);
                   print(_others);
                   setOthers();
+                  _controllerField.clear();
                 },
                 child: const Text('Others')),
             const SizedBox(

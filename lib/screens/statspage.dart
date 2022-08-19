@@ -48,7 +48,7 @@ class StatsPage extends StatelessWidget {
                 height: 30,
               ),
               Text(
-                'Amount spent on essentials: $Essentials',
+                'Amount spent on Essentials: $Essentials',
                 style: const TextStyle(
                     color: razerColor,
                     fontFamily: 'DidactGothic',
@@ -64,7 +64,6 @@ class StatsPage extends StatelessWidget {
                     fontFamily: 'DidactGothic',
                     fontSize: 24),
               ),
-              
             ],
           ),
         ),

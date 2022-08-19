@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, 
+// ignore_for_file: prefer_const_constructors,
 
 import 'package:flutter/material.dart';
 import 'auth.dart';
@@ -19,10 +19,10 @@ class ExpPage extends StatelessWidget {
       theme: ThemeData(primaryColor: const Color.fromARGB(0, 0, 0, 100)),
       home: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.black,
+        backgroundColor: txtBgclr,
         appBar: AppBar(
           leading: BackButton(
-            color: Colors.black,
+            color: txtBgclr,
             onPressed: signOut,
           ),
           backgroundColor: razerColor,
@@ -30,11 +30,11 @@ class ExpPage extends StatelessWidget {
           title: const Text(
             'Welcome!',
             style: TextStyle(
-                color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
+                color: txtBgclr, fontFamily: 'DidactGothic', fontSize: 30),
           ),
         ),
         body: Container(
-          margin: const EdgeInsets.all(20),
+          //decoration: gradColor,
           child: Column(children: [
             const SizedBox(
               height: 50,
@@ -42,7 +42,7 @@ class ExpPage extends StatelessWidget {
             const Text(
               'Please select a service:',
               style: TextStyle(
-                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 22),
+                  color: txtclr, fontFamily: 'DidactGothic', fontSize: 22),
             ),
             const SizedBox(
               height: 50,

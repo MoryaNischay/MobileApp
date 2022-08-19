@@ -45,7 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-
   Widget _entryField(
     String title,
     TextEditingController controller,
@@ -57,7 +56,8 @@ class _LoginScreenState extends State<LoginScreen> {
       decoration: InputDecoration(
         labelText: title,
         labelStyle: TextStyle(color: razerColor),
-        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: razerColor)),
+        enabledBorder:
+            UnderlineInputBorder(borderSide: BorderSide(color: razerColor)),
         //enabledBorder: OutlineInputBorder(),
       ),
     );
@@ -126,3 +126,4 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 }
+

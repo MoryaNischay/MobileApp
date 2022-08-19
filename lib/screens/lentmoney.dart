@@ -44,7 +44,7 @@ class LentMoney extends StatelessWidget {
             const Text(
               'Enter Amount Lent',
               style: TextStyle(
-                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 26),
+                  color: txtclr, fontFamily: 'DidactGothic', fontSize: 26),
             ),
             const SizedBox(
               height: 20,
@@ -52,15 +52,13 @@ class LentMoney extends StatelessWidget {
             TextField(
               controller: _controllermon,
               keyboardType: TextInputType.number,
-              cursorColor: razerColor,
+              cursorColor: txtclr,
               style: const TextStyle(color: razerColor, fontSize: 30),
               decoration: const InputDecoration(
                   hintStyle: (TextStyle(
-                      color: razerColor,
-                      fontFamily: 'DidactGotgic',
-                      fontSize: 20)),
+                      color: txtclr, fontFamily: 'DidactGotgic', fontSize: 20)),
                   enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: razerColor)),
+                      borderSide: BorderSide(color: txtclr)),
                   hintText: 'Amount'),
             ),
             const SizedBox(height: 20),

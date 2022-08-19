@@ -1,10 +1,8 @@
-// ignore_for_file: unused_import, prefer_const_constructors
+// ignore_for_file:  prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
-import 'package:newapp/screens/secondpage.dart';
-import 'package:newapp/screens/firstpage.dart';
-import 'package:newapp/themecode/themecode.dart';
+
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);

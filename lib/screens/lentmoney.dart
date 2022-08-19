@@ -1,17 +1,13 @@
-// ignore_for_file: unused_import, prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages, prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file:  prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages, prefer_const_constructors, non_constant_identifier_names
 
 // ignore: avoid_web_libraries_in_flutter
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:newapp/main.dart';
-import 'package:newapp/screens/firstpage.dart';
 import 'package:newapp/themecode/themecode.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:newapp/screens/lentstats.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-// ignore: must_be_immutable
+
 
 class LentMoney extends StatelessWidget {
   final TextEditingController _controllermon = TextEditingController();
@@ -83,7 +79,10 @@ class LentMoney extends StatelessWidget {
             ),
             ElevatedButton(
                 style: style1,
-                onPressed: () {},
+                onPressed: () { Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LentStats()),
+                  );},
                 child: const Text('Lent Stats')),
           ],
         ),

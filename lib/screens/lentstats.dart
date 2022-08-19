@@ -4,19 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:newapp/themecode/themecode.dart';
 
 class LentStats extends StatelessWidget {
-  String lent;
-  LentStats({
-    Key? key,
-    required this.lent,
-  }) : super(key: key);
+  const LentStats({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
+      backgroundColor: txtBgclr,
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.black,
+          color: txtBgclr,
           onPressed: () {
             Navigator.pop(context);
           },
@@ -31,13 +28,13 @@ class LentStats extends StatelessWidget {
       body: Center(
         child: Center(
           child: Column(
-            children: [
-              const SizedBox(
+            children: const [
+              SizedBox(
                 height: 30,
               ),
               Text(
-                'Amount Lent to others $lent',
-                style: const TextStyle(
+                'Amount Lent to others ',
+                style: TextStyle(
                     color: razerColor,
                     fontFamily: 'DidactGothic',
                     fontSize: 24),

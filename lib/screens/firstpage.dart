@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors, unused_import
+// ignore_for_file: prefer_const_constructors, 
 
 import 'package:flutter/material.dart';
-import 'package:newapp/main.dart';
-import 'package:newapp/screens/LoginScreen.dart';
 import 'auth.dart';
 import 'package:newapp/screens/secondpage.dart';
 

@@ -1,10 +1,8 @@
-// ignore_for_file: unused_import, prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages
+// ignore_for_file:  prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages
 
 // ignore: avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
-import 'package:newapp/main.dart';
-import 'package:newapp/screens/firstpage.dart';
 import 'package:newapp/screens/statspage.dart';
 import 'package:newapp/themecode/themecode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -185,7 +183,6 @@ class Valid extends State<SecondRoute> {
                           others: _others.toString())));
                 },
                 child: const Text('View Stats')),
-            
           ],
         ),
       ),

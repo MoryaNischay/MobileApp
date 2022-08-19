@@ -54,23 +54,32 @@ class _LoginScreenState extends State<LoginScreen> {
     TextEditingController controller,
   ) {
     return TextField(
+      cursorColor: razerColor,
       controller: controller,
+      style: const TextStyle(color: razerColor, fontSize: 20),
       decoration: InputDecoration(
         labelText: title,
+        labelStyle: TextStyle(color: razerColor),
+        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: razerColor)),
+        //enabledBorder: OutlineInputBorder(),
       ),
     );
   }
 
   Widget _errorMessage() {
-    return Text(errorMessage == '' ? '' : 'Wait ? $errorMessage');
+    return Text(errorMessage == '' ? '' : '$errorMessage',
+        style: TextStyle(fontFamily: 'DidactGothic', color: razerColor));
   }
 
   Widget _submitButton() {
     return ElevatedButton(
-      style: style1,
+      style: style2,
       onPressed:
           isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
-      child: Text(isLogin ? 'Login' : 'Register'),
+      child: Text(
+        isLogin ? 'Login' : 'Register',
+        style: TextStyle(fontFamily: 'DidactGothic', fontSize: 20),
+      ),
     );
   }
 
@@ -81,32 +90,42 @@ class _LoginScreenState extends State<LoginScreen> {
           isLogin = !isLogin;
         });
       },
-      child: Text(isLogin ? 'Register Instead' : 'Login Instead'),
+      child: Text(
+        isLogin ? 'Register Instead' : 'Login Instead',
+        style: TextStyle(
+            color: razerColor, fontFamily: 'DidactGothic', fontSize: 16),
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _entryField('email', _controllerEmail),
-            _entryField('password', _controllerPassword),
-            _errorMessage(),
-            _submitButton(),
-            _loginOrregisterButton(),
-          ],
+        backgroundColor: txtBgclr,
+        appBar: AppBar(
+          backgroundColor: razerColor,
+          centerTitle: true,
+          title: Text(
+            isLogin ? 'Login' : 'Register',
+            style: TextStyle(
+                color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
+          ),
         ),
-      )
-    );
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              _entryField('Email', _controllerEmail),
+              _entryField('Password', _controllerPassword),
+              _errorMessage(),
+              _submitButton(),
+              _loginOrregisterButton(),
+            ],
+          ),
+        ));
   }
 }

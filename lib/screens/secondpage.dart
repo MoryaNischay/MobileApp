@@ -161,7 +161,7 @@ class Valid extends State<SecondRoute> {
                 onPressed: () {
                   final groc = _controllerField.text;
 
-                  userSetup(Money: groc);
+                  userSetup(money: groc);
                   _controllerField.clear();
                   // _groceries = _groceries + int.parse(amount);
                   // print(_groceries);
@@ -209,10 +209,10 @@ class Valid extends State<SecondRoute> {
     );
   }
 
-  Future userSetup({required String Money}) async {
+  Future userSetup({required String money}) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid.toString();
-    int mnd = int.parse(Money);
+    int mnd = int.parse(money);
     final docUser = FirebaseFirestore.instance.collection('Groceries').doc(uid);
     final json = {'Groceries': FieldValue.increment(mnd)};
 

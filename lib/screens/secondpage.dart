@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:newapp/screens/statspage.dart';
 import 'package:newapp/themecode/themecode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // ignore: must_be_immutable
 class SecondRoute extends StatefulWidget {
-  const SecondRoute({Key? key}) : super(key: key);
+  SecondRoute({Key? key}) : super(key: key);
 
   @override
   Valid createState() => Valid();
@@ -20,7 +22,7 @@ class SecondRoute extends StatefulWidget {
 class Valid extends State<SecondRoute> {
   // declare a variable to keep track of the input text
   String amount = ' ';
-
+  final TextEditingController _controllerField = TextEditingController();
   int _groceries = 0;
   int _essentials = 0;
   int _others = 0;
@@ -122,30 +124,48 @@ class Valid extends State<SecondRoute> {
             ConstrainedBox(
               constraints:
                   const BoxConstraints.tightFor(width: 200, height: 100),
-              child: TextFormField(
-                  onChanged: (val) => setState(() {
-                        amount = val;
-
-                        //
-                      }),
-                  keyboardType: TextInputType.number,
-                  cursorColor: razerColor,
-                  style: const TextStyle(color: razerColor, fontSize: 30),
-                  decoration: const InputDecoration(
+              child: TextField(
+                controller: _controllerField,
+                keyboardType: TextInputType.number,
+                cursorColor: razerColor,
+                style: const TextStyle(color: razerColor, fontSize: 30),
+                decoration: const InputDecoration(
                     hintStyle: (TextStyle(
                         color: razerColor,
-                        fontFamily: 'DidactGothic',
+                        fontFamily: 'DidactGotgic',
                         fontSize: 20)),
-                    border: UnderlineInputBorder(),
-                    hintText: 'Amount',
-                  )),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: razerColor)),
+                    hintText: 'Amount'),
+              ),
+              // child: TextFormField(
+              //     onChanged: (val) => setState(() {
+              //           amount = val;
+
+              //           //
+              //         }),
+              //     keyboardType: TextInputType.number,
+              //     cursorColor: razerColor,
+              //     style: const TextStyle(color: razerColor, fontSize: 30),
+              //     decoration: const InputDecoration(
+              //       hintStyle: (TextStyle(
+              //           color: razerColor,
+              //           fontFamily: 'DidactGothic',
+              //           fontSize: 20)),
+              //       border: UnderlineInputBorder(),
+              //       hintText: 'Amount',
+              //     )),
             ),
             ElevatedButton(
                 style: style1,
                 onPressed: () {
-                  _groceries = _groceries + int.parse(amount);
-                  print(_groceries);
-                  setGroceries();
+                  final groc = _controllerField.text;
+
+                  userSetup(Money: groc);
+                  _controllerField.clear();
+                  // _groceries = _groceries + int.parse(amount);
+                  // print(_groceries);
+                  // setGroceries();
                 },
                 child: const Text('Groceries')),
             const SizedBox(
@@ -187,5 +207,15 @@ class Valid extends State<SecondRoute> {
         ),
       ),
     );
+  }
+
+  Future userSetup({required String Money}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    String uid = auth.currentUser!.uid.toString();
+    int mnd = int.parse(Money);
+    final docUser = FirebaseFirestore.instance.collection('Groceries').doc(uid);
+    final json = {'Groceries': FieldValue.increment(mnd)};
+
+    await docUser.set(json, SetOptions(merge: true));
   }
 }

@@ -8,7 +8,6 @@ import 'package:newapp/themecode/themecode.dart';
 import 'package:newapp/screens/lentstats.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class LentMoney extends StatelessWidget {
   final TextEditingController _controllermon = TextEditingController();
 
@@ -79,10 +78,12 @@ class LentMoney extends StatelessWidget {
             ),
             ElevatedButton(
                 style: style1,
-                onPressed: () { Navigator.push(
+                onPressed: () {
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LentStats()),
-                  );},
+                  );
+                },
                 child: const Text('Lent Stats')),
           ],
         ),

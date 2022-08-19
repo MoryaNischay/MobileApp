@@ -75,6 +75,7 @@ class LentMoney extends StatelessWidget {
                   final m = _controllermon.text;
 
                   userSetup(Money: m);
+                  _controllermon.clear();
                 },
                 child: Text('Submit Data')),
             const SizedBox(
@@ -89,12 +90,14 @@ class LentMoney extends StatelessWidget {
       ),
     );
   }
+
   Future userSetup({required String Money}) async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    String uid = auth.currentUser!.uid.toString();  
+    String uid = auth.currentUser!.uid.toString();
+    int mnd = int.parse(Money);
     final docUser = FirebaseFirestore.instance.collection('MoneyLent').doc(uid);
-    final json = {'Amount': int.parse(Money)};
+    final json = {'Amount': FieldValue.increment(mnd)};
 
-    await docUser.set(json);
+    await docUser.set(json, SetOptions(merge: true));
   }
 }

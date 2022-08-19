@@ -14,6 +14,7 @@ class ExpPage extends StatelessWidget {
   Future<void> signOut() async {
     await Auth().signOut();
   }
+
   @override
   Widget build(context) {
     return MaterialApp(
@@ -25,12 +26,11 @@ class ExpPage extends StatelessWidget {
           leading: BackButton(
             color: Colors.black,
             onPressed: signOut,
-            
           ),
           backgroundColor: razerColor,
           centerTitle: true,
           title: const Text(
-            'Select A Service',
+            'Welcome!',
             style: TextStyle(
                 color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
           ),
@@ -38,6 +38,14 @@ class ExpPage extends StatelessWidget {
         body: Container(
           margin: const EdgeInsets.all(20),
           child: Column(children: [
+            const SizedBox(
+              height: 50,
+            ),
+            const Text(
+              'Please select a service:',
+              style: TextStyle(
+                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 22),
+            ),
             const SizedBox(
               height: 50,
             ),
@@ -72,7 +80,6 @@ class ExpPage extends StatelessWidget {
                 ),
               ),
             ]),
-            
           ]),
         ),
       ),

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'LoginScreen.dart';
-import 'home.dart';
+
 import 'auth.dart';
 import 'firstpage.dart';
 

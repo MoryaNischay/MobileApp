@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Firebase Auth'),
+        title: const Text('Firebase Auth'),
       ),
       body: Container(
           height: double.infinity,

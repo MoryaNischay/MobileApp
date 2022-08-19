@@ -1,64 +1,32 @@
-// ignore_for_file: unused_import, prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages
+// ignore_for_file: unused_import, prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages, prefer_const_constructors, non_constant_identifier_names
 
 // ignore: avoid_web_libraries_in_flutter
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:newapp/main.dart';
 import 'package:newapp/screens/firstpage.dart';
 import 'package:newapp/themecode/themecode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:newapp/screens/lentstats.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 // ignore: must_be_immutable
-class LentMoney extends StatefulWidget {
-  const LentMoney({Key? key}) : super(key: key);
 
-  @override
-  Valid createState() => Valid();
+class LentMoney extends StatelessWidget {
+  final TextEditingController _controllermon = TextEditingController();
 
-  void onSubmit(String moneyln) {}
-}
-
-class Valid extends State<LentMoney> {
-  // ignore: unused_field
-  final _formKey = GlobalKey<FormState>();
-  // declare a variable to keep track of the input text
-  String moneyln = ' ';
-
-  int lentmoney = 0;
-
-  getLentValue() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    int? lnmoney = pref.getInt('money value');
-    return lnmoney;
-  }
-
-  setLentMoney() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setInt('givenmoney', lentmoney);
-  }
-
-  checkLentvalue() async {
-    int lenmon = await getLentValue() ?? 0;
-    setState(() {
-      lentmoney = lenmon;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    checkLentvalue();
-  }
+  LentMoney({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
+      resizeToAvoidBottomInset: true,
+      backgroundColor: txtBgclr,
       appBar: AppBar(
+        centerTitle: true,
         leading: BackButton(
-          color: Colors.black,
+          color: txtBgclr,
           onPressed: () {
             Navigator.pop(context);
           },
@@ -67,63 +35,66 @@ class Valid extends State<LentMoney> {
         title: const Text(
           'Money Lent',
           style: TextStyle(
-              color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
+              color: txtBgclr, fontFamily: 'DidactGothic', fontSize: 30),
         ),
       ),
       body: Container(
-        // key: _formKey,
-        margin: const EdgeInsets.only(top: 30, left: 65),
-        child: Column(children: [
-          const Text(
-            'Enter Amount Lent',
-            style: TextStyle(
-                color: razerColor, fontFamily: 'DidactGothic', fontSize: 26),
-          ),
-          const SizedBox(
-            height: 80,
-          ),
-          ConstrainedBox(
-            constraints: const BoxConstraints.tightFor(width: 200, height: 100),
-            child: TextFormField(
-                onChanged: (val) => setState(() {
-                      moneyln = val;
-
-                      //
-                    }),
-                keyboardType: TextInputType.number,
-                cursorColor: razerColor,
-                style: const TextStyle(color: razerColor, fontSize: 30),
-                decoration: const InputDecoration(
+        height: double.infinity,
+        width: double.infinity,
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Enter Amount Lent',
+              style: TextStyle(
+                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 26),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextField(
+              controller: _controllermon,
+              keyboardType: TextInputType.number,
+              cursorColor: razerColor,
+              style: const TextStyle(color: razerColor, fontSize: 30),
+              decoration: const InputDecoration(
                   hintStyle: (TextStyle(
                       color: razerColor,
-                      fontFamily: 'DidactGothic',
+                      fontFamily: 'DidactGotgic',
                       fontSize: 20)),
-                  border: UnderlineInputBorder(),
-                  hintText: 'Amount',
-                )),
-          ),
-          ElevatedButton(
-              style: style1,
-              onPressed: () {
-                lentmoney = lentmoney + int.parse(moneyln);
-                print(lentmoney);
-                setLentMoney();
-              },
-              child: const Text('OK')),
-          const SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(
-              style: style1,
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        LentStats(lent: lentmoney.toString())));
-              },
-              child: const Text('Lent Stats')),
-        
-        ]),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: razerColor)),
+                  hintText: 'Amount'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                style: style1,
+                onPressed: () async {
+                  final m = _controllermon.text;
+
+                  userSetup(Money: m);
+                },
+                child: Text('Submit Data')),
+            const SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                style: style1,
+                onPressed: () {},
+                child: const Text('Lent Stats')),
+          ],
+        ),
       ),
     );
+  }
+  Future userSetup({required String Money}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    String uid = auth.currentUser!.uid.toString();  
+    final docUser = FirebaseFirestore.instance.collection('MoneyLent').doc(uid);
+    final json = {'Amount': int.parse(Money)};
+
+    await docUser.set(json);
   }
 }

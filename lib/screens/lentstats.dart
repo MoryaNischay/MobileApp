@@ -1,11 +1,7 @@
-// ignore_for_file: must_be_immutable, non_constant_identifier_names
-
-
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:newapp/themecode/themecode.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LentStats extends StatefulWidget {
   const LentStats({Key? key}) : super(key: key);
@@ -17,14 +13,19 @@ class LentStats extends StatefulWidget {
 class _LentStatsState extends State<LentStats> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  // Future GetMoney() async {
-  //   String uid = auth.currentUser!.uid.toString();
-  //   var data =
-  //       FirebaseFirestore.instance.collection('MoneyLent').doc(uid).get();
-  //   print(data);
-  // }
+  Future GetMoney() async {
+    String uid = auth.currentUser!.uid.toString();
+    var data =
+        FirebaseFirestore.instance.collection('MoneyLent').doc(uid).get();
+    print(data);
+  }
 
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    GetMoney();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

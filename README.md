@@ -16,4 +16,5 @@ Look out for more themes to be added in the future!!
 
 ## Run
 Install the dart extension in open the main.dart file. 
+
 Type flutter run to run the app on Windows/Edge or any other Virtual Mobile Device you have setup!

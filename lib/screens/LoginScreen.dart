@@ -3,7 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:newapp/screens/home.dart';
+import 'package:newapp/screens/1home.dart';
 import 'package:newapp/themecode/themecode.dart';
 import 'auth.dart';
 
@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
-
+  
   Future<void> signInWithEmailAndPassword() async {
     try {
       await Auth().signInWithEmailAndPassword(
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
     }
   }
-
+  
   Widget _entryField(
     String title,
     TextEditingController controller,
@@ -67,18 +67,22 @@ class _LoginScreenState extends State<LoginScreen> {
     return Text(errorMessage == '' ? '' : '$errorMessage',
         style: TextStyle(fontFamily: 'DidactGothic', color: razerColor));
   }
+  
+  
 
   Widget _submitButton() {
     return ElevatedButton(
       style: style2,
-      onPressed:
+      onPressed: 
           isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
+                  
       child: Text(
         isLogin ? 'Login' : 'Register',
         style: TextStyle(fontFamily: 'DidactGothic', fontSize: 20),
       ),
     );
   }
+ 
 
   Widget _loginOrregisterButton() {
     return TextButton(
@@ -86,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {
           isLogin = !isLogin;
         });
+        
       },
       child: Text(
         isLogin ? 'Register Instead' : 'Login Instead',
@@ -118,6 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: <Widget>[
               _entryField('Email', _controllerEmail),
               _entryField('Password', _controllerPassword),
+              
               _errorMessage(),
               _submitButton(),
               _loginOrregisterButton(),

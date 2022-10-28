@@ -94,8 +94,7 @@ class LentMoney extends StatelessWidget {
     String uid = auth.currentUser!.uid.toString();
     int mnd = int.parse(Money);
     final docUser = FirebaseFirestore.instance.collection('MoneyLent').doc(uid);
-    final json = {'Amount': FieldValue.increment(mnd)};
-
+    final json = {'Amount': FieldValue.increment(mnd),'userid':uid};
     await docUser.set(json, SetOptions(merge: true));
   }
 }

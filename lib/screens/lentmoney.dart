@@ -79,7 +79,7 @@ class LentMoney extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LentStats()),
+                    MaterialPageRoute(builder: (context) => Fetchdata()),
                   );
                 },
                 child: const Text('Lent Stats')),
@@ -94,7 +94,7 @@ class LentMoney extends StatelessWidget {
     String uid = auth.currentUser!.uid.toString();
     int mnd = int.parse(Money);
     final docUser = FirebaseFirestore.instance.collection('MoneyLent').doc(uid);
-    final json = {'Amount': FieldValue.increment(mnd),'userid':uid};
+    final json = {'Lent': FieldValue.increment(mnd), 'userid': uid};
     await docUser.set(json, SetOptions(merge: true));
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors,
 
 import 'package:flutter/material.dart';
-import 'package:newapp/screens/lentstats.dart';
+
 import 'auth.dart';
 import 'package:newapp/screens/secondpage.dart';
 

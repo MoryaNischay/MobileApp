@@ -1,65 +1,62 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:newapp/themecode/themecode.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class LentStats extends StatefulWidget {
-  const LentStats({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:newapp/screens/getshitton.dart';
+
+
+class Fetchdata extends StatefulWidget {
+  const Fetchdata({Key? key}) : super(key: key);
 
   @override
-  State<LentStats> createState() => _LentStatsState();
+  State<Fetchdata> createState() => _FetchdataState();
 }
 
-class _LentStatsState extends State<LentStats> {
-  FirebaseAuth auth = FirebaseAuth.instance;
+class _FetchdataState extends State<Fetchdata> {
+  final user = FirebaseAuth.instance.currentUser!;
 
-  Future GetMoney() async {
-    String uid = auth.currentUser!.uid.toString();
-    var data =
-        FirebaseFirestore.instance.collection('MoneyLent').doc(uid).get();
-    print(data);
+  //docid
+  List<String> docIDs = [];
+
+  //get doc id
+  Future getDocID() async {
+    await FirebaseFirestore.instance
+        .collection('MoneyLent')
+        .get()
+        .then((snapshot) => snapshot.docs.forEach((document) {
+              print(document.reference);
+              docIDs.add(document.reference.id);
+            }));
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    GetMoney();
-    super.initState();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: txtBgclr,
-      appBar: AppBar(
-        leading: BackButton(
-          color: txtBgclr,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: razerColor,
-        title: const Text(
-          'Money Lent',
-          style: TextStyle(
-              color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
-        ),
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Signed in as: ' + user.uid,
+            style: TextStyle(fontSize: 20),
+          ),
+          Expanded(child: FutureBuilder(
+            future: getDocID(),
+            builder: ((context, snapshot) {
+            
+              return ListView.builder(
+                  itemCount: 1,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: GetMoney(documentId: user.uid),
+                    );
+                  });
+            
+          })))
+        ],
       ),
-      body: Center(
-        child: Column(
-          children: const [
-            SizedBox(
-              height: 30,
-            ),
-            Text(
-              'Amount Lent to others ',
-              style: TextStyle(
-                  color: razerColor, fontFamily: 'DidactGothic', fontSize: 24),
-            ),
-          ],
-        ),
-      ),
-    );
+    ));
   }
 }

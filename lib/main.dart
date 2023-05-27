@@ -20,7 +20,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        backgroundColor: txtBgclr,
+        //set background color
+        colorScheme: const ColorScheme.light(
+          primary: Color(0xFFE5E5E5),
+          secondary: Color(0xFFE5E5E5),
+          background: txtBgclr,
+        ),
       ),
       home: const SnapShotDecider(),
     );

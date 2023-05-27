@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -39,8 +38,8 @@ class _FetchdataState extends State<Fetchdata> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Signed in as: ' + user.uid,
-            style: TextStyle(fontSize: 20),
+            'Signed in as: ${user.uid}',
+            style: const TextStyle(fontSize: 20),
           ),
           Expanded(child: FutureBuilder(
             future: getDocID(),

@@ -37,7 +37,7 @@ class Valid extends State<SecondRoute> {
         labelText: title,
         labelStyle: TextStyle(color: razerColor),
         enabledBorder:
-            UnderlineInputBorder(borderSide: BorderSide(color: razerColor)),
+            UnderlineInputBorder(borderSide: const BorderSide(color: razerColor)),
         //enabledBorder: OutlineInputBorder(),
       ),
     );

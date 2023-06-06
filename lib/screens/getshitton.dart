@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GetMoney extends StatelessWidget {
   final String documentId;
-  const GetMoney({required this.documentId});
+  const GetMoney({super.key, required this.documentId});
 
   @override
   Widget build(BuildContext context) {

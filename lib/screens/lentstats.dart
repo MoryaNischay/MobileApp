@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newapp/screens/getshitton.dart';
+import 'package:newapp/themecode/themecode%20copy.dart';
 
 
 class Fetchdata extends StatefulWidget {
@@ -35,15 +36,32 @@ class _FetchdataState extends State<Fetchdata> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: txtBgclr,
+        appBar: AppBar(
+          backgroundColor: razerColor,
+          centerTitle: true,
+          title: Text(
+            'Signed in as: ${user.uid}',
+            style: const TextStyle(
+              color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30,
+            ),
+          ),
+        ),
         body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          //add sized box here
+          const SizedBox(
+            height: 20,
+          ),
           Text(
             'Signed in as: ${user.uid}',
             style: const TextStyle(fontSize: 20),
           ),
-          Expanded(child: FutureBuilder(
+          Expanded(child: Scaffold( 
+            body:
+          FutureBuilder(
             future: getDocID(),
             builder: ((context, snapshot) {
             
@@ -55,7 +73,7 @@ class _FetchdataState extends State<Fetchdata> {
                     );
                   });
             
-          })))
+          }))))
         ],
       ),
     ));

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:newapp/themecode/themecode.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:newapp/screens/spentstats.dart';
 // ignore: must_be_immutable
 class SecondRoute extends StatefulWidget {
   SecondRoute({Key? key}) : super(key: key);
@@ -141,9 +141,19 @@ class Valid extends State<SecondRoute> {
                   } 
                 },
                 child: const Text('Add')),
+
             const SizedBox(
               height: 30,
             ),
+            ElevatedButton(
+                style: style1,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Fetchdata()),
+                  );
+                },
+                child: const Text('Spent Stats')),
           ],
         ),
       ),

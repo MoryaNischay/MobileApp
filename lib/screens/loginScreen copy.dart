@@ -112,6 +112,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 colors: [Colors.blue, Colors.purple])),
         child: Scaffold(
             backgroundColor: Colors.transparent,
+            // appBar: AppBar(
+            //   backgroundColor: razerColor,
+            //   centerTitle: true,
+            //   title: Text(
+            //     isLogin ? 'Login' : 'Register',
+            //     style: TextStyle(
+            //         color: Colors.black, fontFamily: 'DidactGothic', fontSize: 30),
+            //   ),
+            // ),
 
             body: Container(
               //set the padding on top to be 200

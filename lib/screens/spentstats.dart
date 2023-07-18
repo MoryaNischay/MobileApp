@@ -23,7 +23,7 @@ class _FetchdataState extends State<Fetchdata> {
   //get doc id
   Future getDocID() async {
     await FirebaseFirestore.instance
-        .collection('MoneyLent')
+        .collection('Groceries')
         .get()
         .then((snapshot) => snapshot.docs.forEach((document) {
               print(document.reference);
@@ -38,21 +38,17 @@ class _FetchdataState extends State<Fetchdata> {
     return Scaffold(
         backgroundColor: txtBgclr,
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 211, 165, 219),
+          backgroundColor:const Color.fromARGB(255, 8, 78, 31),
           centerTitle: true,
           title: const Text(
-            'Money Lent',
+            'Money Spent',
             style: TextStyle(
               color: Colors.white, fontFamily: 'DidactGothic', fontSize: 30,
             ),
           ),
         ),
         body: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Colors.blue, Colors.purple])),
+          color: const Color.fromARGB(219, 181, 240, 186),
           padding: const EdgeInsets.all(20),
       child: Column(
       
@@ -68,9 +64,10 @@ class _FetchdataState extends State<Fetchdata> {
           ),
           const Padding(padding: EdgeInsets.only(top: 50,bottom: 10)),
           Expanded(
+             
             child:Container(
-              padding: const EdgeInsets.only(top: 150),
-            
+             
+              
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
@@ -79,14 +76,40 @@ class _FetchdataState extends State<Fetchdata> {
             
             future: getDocID(),
             builder: ((context, snapshot) {
-            
-              return ListView.builder(
-                  itemCount: 1,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: GetMoney(documentId: user.uid),
+              //make a list which will contain getgroc getess getott
+              List<Widget> list = [];
+              if (snapshot.connectionState == ConnectionState.done) {
+                
+                  list.add(ListTile(
+                    title: GetGroc(documentId: user.uid),
+                  ));
+                  list.add(ListTile(
+                    title: GetEss(documentId:   user.uid),
+                  ));
+                  list.add(ListTile(
+                    title: GetOtt(documentId:   user.uid),
+                  ));
+                return ListView.separated(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: list.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color.fromARGB(255, 8, 78, 31),
+                      ),
+                      height: 100,
+                      
+                      child: Center(child: list[index]),
                     );
-                  });
+                  }
+                  , separatorBuilder: (BuildContext context, int index) => const Divider(),
+                  );
+                  
+              }
+              return const Text("loading...");
+
             
           }),
             )
@@ -94,6 +117,7 @@ class _FetchdataState extends State<Fetchdata> {
           ))
         ],
       ),
+      
     ));
   }
 }

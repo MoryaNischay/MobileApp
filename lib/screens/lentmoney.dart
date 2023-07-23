@@ -21,33 +21,35 @@ class LentMoney extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         leading: BackButton(
-          color: txtBgclr,
+          color: razerColor,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: razerColor,
+        backgroundColor: Colors.black,
         title: const Text(
           'Money Lent',
           style: TextStyle(
-              color: txtBgclr, fontFamily: 'DidactGothic', fontSize: 30),
+              color: razerColor, fontFamily: 'DidactGothic', fontSize: 30),
         ),
       ),
       body: Container(
+        color: bgcolor,
         height: double.infinity,
         width: double.infinity,
         padding: const EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          
           children: [
+            SizedBox(
+              height: 20,),
             const Text(
               'Enter Amount Lent',
               style: TextStyle(
                   color: txtclr, fontFamily: 'DidactGothic', fontSize: 26),
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             TextField(
               controller: _controllermon,
@@ -70,7 +72,7 @@ class LentMoney extends StatelessWidget {
                   userSetup(Money: m);
                   _controllermon.clear();
                 },
-                child: Text('Submit Data')),
+                child: Text('Submit Data',style: TextStyle(fontSize: 20),)),
             const SizedBox(
               height: 30,
             ),
@@ -82,7 +84,7 @@ class LentMoney extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => Fetchdata()),
                   );
                 },
-                child: const Text('Lent Stats')),
+                child: const Text('Lent Stats', style: TextStyle(fontSize: 20,),)),
           ],
         ),
       ),

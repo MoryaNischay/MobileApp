@@ -1,4 +1,4 @@
-// ignore_for_file:  prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages
+// ignore_for_file:  prefer_const_constructors_in_immutables, avoid_print, depend_on_referenced_packages, unused_element
 
 // ignore: avoid_web_libraries_in_flutter
 
@@ -21,9 +21,7 @@ class Valid extends State<SecondRoute> {
   // declare a variable to keep track of the input text
   String amount = ' ';
   final TextEditingController _controllerField = TextEditingController();
-  int _groceries = 0;
-  int _essentials = 0;
-  int _others = 0;
+
 
   Widget _entryField(
     String title,
@@ -32,12 +30,14 @@ class Valid extends State<SecondRoute> {
     return TextField(
       cursorColor: razerColor,
       controller: controller,
+      
       style: const TextStyle(color: razerColor, fontSize: 20),
       decoration: InputDecoration(
+        border: const OutlineInputBorder(borderSide: BorderSide(color: razerColor)),
         labelText: title,
-        labelStyle: TextStyle(color: razerColor),
+        labelStyle: const TextStyle(color: razerColor),
         enabledBorder:
-            UnderlineInputBorder(borderSide: const BorderSide(color: razerColor)),
+            const UnderlineInputBorder(borderSide: BorderSide(color: razerColor)),
         //enabledBorder: OutlineInputBorder(),
       ),
     );
@@ -52,7 +52,7 @@ class Valid extends State<SecondRoute> {
       iconSize: 24,
       elevation: 16,
       style: const TextStyle(color: razerColor, fontSize: 20),
-      dropdownColor: Colors.black,
+      dropdownColor: const Color.fromARGB(255, 48, 46, 46),
       underline: Container(
         height: 2,
         color: razerColor,
@@ -80,23 +80,24 @@ class Valid extends State<SecondRoute> {
       backgroundColor: txtBgclr,
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.black,
+          color: razerColor,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: razerColor,
+        backgroundColor: Colors.black,
         title: const Text(
           'Money Spent',
           style: TextStyle(
-              color: txtBgclr, fontFamily: 'DidactGothic', fontSize: 30),
+              color: razerColor, fontFamily: 'DidactGothic', fontSize: 30),
         ),
       ),
       body: Container(
+        color: const Color.fromARGB(255, 26, 25, 25),
         height: double.infinity,
         width: double.infinity,
         child: Column(
-          children: [
+          children: <Widget>[
             const SizedBox(
               height: 20,
             ),
@@ -108,18 +109,25 @@ class Valid extends State<SecondRoute> {
             const SizedBox(
               height: 80,
             ),
-            TextField(
+            Padding(padding: const EdgeInsets.all(8),
+            child: TextField(
+              //make this have padding on the left and right
+              
               controller: _controllerField,
               keyboardType: TextInputType.number,
               cursorColor: txtclr,
               style: const TextStyle(color: razerColor, fontSize: 30),
               decoration: const InputDecoration(
+                border: OutlineInputBorder(borderSide: BorderSide(color: razerColor)),
+
                   hintStyle: (TextStyle(
                       color: txtclr, fontFamily: 'DidactGotgic', fontSize: 20)),
                   enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: txtclr)),
                   hintText: 'Amount'),
             ),
+            ),
+            
             const SizedBox(
               height: 20,
             ),
@@ -138,7 +146,8 @@ class Valid extends State<SecondRoute> {
                     userSetup(money: groc, category: 'Essentials');
                   } else {
                     userSetup(money: groc, category: 'Others');
-                  } 
+                  }
+                  _controllerField.clear(); 
                 },
                 child: const Text('Add')),
 
@@ -150,7 +159,7 @@ class Valid extends State<SecondRoute> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Fetchdata()),
+                    MaterialPageRoute(builder: (context) => const Fetchdata()),
                   );
                 },
                 child: const Text('Spent Stats')),

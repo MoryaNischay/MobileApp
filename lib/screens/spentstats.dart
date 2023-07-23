@@ -1,10 +1,10 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, avoid_function_literals_in_foreach_calls
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newapp/screens/getshitton.dart';
-import 'package:newapp/themecode/themecode%20copy.dart';
+import 'package:newapp/themecode/themecode.dart';
 
 
 class Fetchdata extends StatefulWidget {
@@ -38,17 +38,23 @@ class _FetchdataState extends State<Fetchdata> {
     return Scaffold(
         backgroundColor: txtBgclr,
         appBar: AppBar(
-          backgroundColor:const Color.fromARGB(255, 8, 78, 31),
+          leading: BackButton(
+            color: razerColor,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
           centerTitle: true,
           title: const Text(
             'Money Spent',
             style: TextStyle(
-              color: Colors.white, fontFamily: 'DidactGothic', fontSize: 30,
+              color: razerColor, fontFamily: 'DidactGothic', fontSize: 30,
             ),
           ),
         ),
         body: Container(
-          color: const Color.fromARGB(219, 181, 240, 186),
+          color: const Color.fromARGB(255, 26, 25, 25),
           padding: const EdgeInsets.all(20),
       child: Column(
       
@@ -60,16 +66,16 @@ class _FetchdataState extends State<Fetchdata> {
           ),
           Text(
             'Signed in as: ${user.uid}',
-            style: const TextStyle(color: Colors.white,fontSize: 20),
+            style: const TextStyle(color: razerColor,fontSize: 20),
           ),
-          const Padding(padding: EdgeInsets.only(top: 50,bottom: 10)),
+          const Padding(padding: EdgeInsets.only(bottom: 10)),
           Expanded(
              
             child:Container(
              
               
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: const Color.fromARGB(255, 48, 46, 46),
                 borderRadius: BorderRadius.circular(20),
               ),
             child: FutureBuilder(
@@ -94,10 +100,10 @@ class _FetchdataState extends State<Fetchdata> {
                   itemCount: list.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: const Color.fromARGB(255, 8, 78, 31),
+                        color: const Color.fromARGB(180, 0, 0, 0),
                       ),
                       height: 100,
                       

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:newapp/themecode/themecode.dart';
 
 class GetMoney extends StatelessWidget {
   final String documentId;
@@ -17,7 +18,7 @@ class GetMoney extends StatelessWidget {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
             return Text("Amount Lent: ${data['Lent']}",
-                style: const TextStyle(color:  Colors.white,fontSize: 20));
+                style: const TextStyle(color:  razerColor,fontSize: 20));
           }
           return const Text("loading...");
         })));
@@ -40,7 +41,7 @@ class GetGroc extends StatelessWidget {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
             return Text("Amount Spent on Groceries: ${data['Groceries']}",
-                style: const TextStyle(color:  Colors.white,fontSize: 20));
+                style: const TextStyle(color:  razerColor,fontSize: 20));
           }
           return const Text("loading...");
         })));
@@ -63,7 +64,7 @@ class GetEss extends StatelessWidget {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
             return Text("Amount Lent: ${data['Essentials']}",
-                style:const TextStyle(color:  Colors.white,fontSize: 20));
+                style:const TextStyle(color:  razerColor,fontSize: 20));
           }
           return const Text("loading...");
         })));
@@ -86,7 +87,7 @@ class GetOtt extends StatelessWidget {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
             return Text("Amount Spent on Other: ${data['Others']}",
-                style: const TextStyle(color:  Colors.white,fontSize: 20));
+                style: const TextStyle(color:  razerColor,fontSize: 20));
           }
           return const Text("loading...");
         })));

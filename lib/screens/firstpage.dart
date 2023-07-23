@@ -23,19 +23,24 @@ class ExpPage extends StatelessWidget {
         backgroundColor: txtBgclr,
         appBar: AppBar(
           leading: BackButton(
-            color: txtBgclr,
+            color: razerColor,
             onPressed: signOut,
           ),
           actions: <Widget>[funny()],
-          backgroundColor: razerColor,
+          backgroundColor: Colors.black,
           centerTitle: true,
           title: const Text(
             'Welcome!',
             style: TextStyle(
-                color: txtBgclr, fontFamily: 'DidactGothic', fontSize: 30),
+                color: razerColor, fontFamily: 'DidactGothic', fontSize: 30),
           ),
         ),
-        body: Column(children: [
+        body:  Container(
+        color: bgcolor,
+        height: double.infinity,
+        width: double.infinity,
+        padding: const EdgeInsets.all(20),
+        child: Column(children: [
           const SizedBox(
             height: 50,
           ),
@@ -80,7 +85,7 @@ class ExpPage extends StatelessWidget {
           ]),
         ]),
       ),
-    );
+    ));
   }
 
   Widget funny() {

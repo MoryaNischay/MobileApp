@@ -52,16 +52,17 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextField(
       //set padding in left and right to be 10
       
-      cursorColor: Colors.black,
+      cursorColor: razerColor,
       controller: controller,
       
-      style: const TextStyle(color: Colors.black, fontSize: 20),
+      style: const TextStyle(color: razerColor, fontSize: 20),
       decoration: InputDecoration(
+        border: const OutlineInputBorder(borderSide: BorderSide(color: razerColor)),
         contentPadding: EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
         labelText: title,
-        labelStyle: TextStyle(color: Colors.black),
+        labelStyle: TextStyle(color: razerColor),
         enabledBorder:
-            UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            UnderlineInputBorder(borderSide: BorderSide(color: razerColor)),
         //enabledBorder: OutlineInputBorder(),
       ),
     );
@@ -75,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _submitButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-    foregroundColor: txtBgclr, backgroundColor: Color.fromARGB(255, 211, 165, 219),
+    foregroundColor: txtBgclr, backgroundColor: razerColor,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
     minimumSize: const Size(200, 50)),
       onPressed:
@@ -97,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Text(
         isLogin ? 'Register Instead' : 'Login Instead',
         style: TextStyle(
-            color: Colors.black, fontFamily: 'DidactGothic', fontSize: 16),
+            color: razerColor, fontFamily: 'DidactGothic', fontSize: 16),
       ),
     );
   }
@@ -105,13 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.blue, Colors.purple])),
+        color: bgcolor,
         child: Scaffold(
-            backgroundColor: Colors.transparent,
+            backgroundColor: txtBgclr,
 
             body: Container(
               //set the padding on top to be 200
@@ -128,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //round the corners of the container
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
+                        color: bgcolor,
                       ),
                       child: Column(
                         children: <Widget>[
@@ -139,11 +136,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: const EdgeInsets.all(20)
                           ),
                           Text(
-                            'Hello',
+                            'Hello!',
                             style: TextStyle(
                                 fontFamily: 'DidactGothic',
                                 fontSize: 40,
-                                color: Colors.black),
+                                color: razerColor),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 20, right: 20),

@@ -23,25 +23,6 @@ class Valid extends State<SecondRoute> {
   final TextEditingController _controllerField = TextEditingController();
 
 
-  Widget _entryField(
-    String title,
-    TextEditingController controller,
-  ) {
-    return TextField(
-      cursorColor: razerColor,
-      controller: controller,
-      
-      style: const TextStyle(color: razerColor, fontSize: 20),
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(borderSide: BorderSide(color: razerColor)),
-        labelText: title,
-        labelStyle: const TextStyle(color: razerColor),
-        enabledBorder:
-            const UnderlineInputBorder(borderSide: BorderSide(color: razerColor)),
-        //enabledBorder: OutlineInputBorder(),
-      ),
-    );
-  }
 
   //drop down menu widget
   String dropdownValue = 'Groceries';
@@ -118,10 +99,10 @@ class Valid extends State<SecondRoute> {
               cursorColor: txtclr,
               style: const TextStyle(color: razerColor, fontSize: 30),
               decoration: const InputDecoration(
-                border: OutlineInputBorder(borderSide: BorderSide(color: razerColor)),
-
+                border: const OutlineInputBorder(borderSide: BorderSide(color: razerColor)),
+                contentPadding: EdgeInsetsDirectional.fromSTEB(16, 24, 0, 24),
                   hintStyle: (TextStyle(
-                      color: txtclr, fontFamily: 'DidactGotgic', fontSize: 20)),
+                      color: txtclr, fontFamily: 'DidactGothic', fontSize: 20)),
                   enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: txtclr)),
                   hintText: 'Amount'),

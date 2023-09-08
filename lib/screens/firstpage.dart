@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors,
 
 import 'package:flutter/material.dart';
+import 'package:newapp/screens/stocks.dart';
 
 import 'auth.dart';
 import 'package:newapp/screens/secondpage.dart';
@@ -53,6 +54,10 @@ class ExpPage extends StatelessWidget {
             height: 50,
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            const SizedBox(
+              width: 20,
+              height: 10,
+            ),
             ElevatedButton(
               style: style1,
               onPressed: () {
@@ -66,9 +71,7 @@ class ExpPage extends StatelessWidget {
                 style: TextStyle(fontFamily: 'DidactGothic', fontSize: 17),
               ),
             ),
-            const SizedBox(
-              width: 20,
-            ),
+           
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -82,7 +85,30 @@ class ExpPage extends StatelessWidget {
                 style: TextStyle(fontFamily: 'DidactGothic', fontSize: 17),
               ),
             ),
+            const SizedBox(
+              width: 20,
+              height: 10,
+            ),
+            //create an elevated button to go to the stocks page
+            
           ]),
+          const SizedBox(
+            height: 50,
+
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Stocks()),
+                );
+              },
+              style: style1,
+              child: const Text(
+                'Stocks',
+                style: TextStyle(fontFamily: 'DidactGothic', fontSize: 17),
+              ),
+            ),
         ]),
       ),
     ));

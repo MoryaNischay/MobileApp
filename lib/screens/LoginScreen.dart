@@ -142,9 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontSize: 40,
                                 color: razerColor),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20, right: 20),
-                          ),
+                          
                           _entryField('Email', _controllerEmail),
                           _entryField('Password', _controllerPassword),
 
